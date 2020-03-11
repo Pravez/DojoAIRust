@@ -856,9 +856,9 @@ checksum = "b1c601810575c99596d4afc46f78a678c80105117c379eb3650cf99b8a21ce5b"
 
 [[package]]
 name = "opencv"
-version = "0.31.1"
+version = "0.32.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "43026ad027e7c9a25569f324e09ef13830f43c2aa8756a2520c0818140d4077e"
+checksum = "9ef12f5fa605e38df0415a04659b724cbc0d41e34e637ade5dfdb53a490de2ea"
 dependencies = [
  "cc",
  "glob",
