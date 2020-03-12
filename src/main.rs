@@ -7,6 +7,7 @@ use opencv::imgproc::{rectangle, LINE_4, cvt_color, COLOR_BGR2RGB, circle};
 use crate::detector::Detector;
 
 pub mod detector;
+pub mod detection_rectangle;
 
 fn main() {
     let mut capture = VideoCapture::new(0, CAP_ANY).unwrap();
@@ -24,8 +25,8 @@ fn main() {
         cvt_color(&image, &mut rgb_image, COLOR_BGR2RGB, 0);
         let (rectangles, encodings) = detector.get_vectorized_faces(&mut image);
 
-        for r in rectangles.iter() {
-            rectangle(&mut image, Rect2i { x: r.left as i32, y: r.top as i32, width: (r.right - r.left) as i32, height: (r.bottom - r.top) as i32 }, color, 1, LINE_4, 0);
+        for r in rectangles {
+            rectangle(&mut image, r, color, 1, LINE_4, 0);
         }
 
 
