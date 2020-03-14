@@ -3,8 +3,7 @@ extern crate face_recognition;
 use face_recognition::face_detection::FaceDetector;
 use face_recognition::landmark_prediction::LandmarkPredictor;
 use face_recognition::face_encoding::{FaceEncodings, FaceEncodingNetwork};
-use opencv::core::{Mat, MatTrait, Rect, Rect2i};
-use face_recognition::Rectangle;
+use opencv::core::{Mat, MatTrait, Rect2i};
 use face_recognition::ImageMatrix;
 use crate::detection_rectangle::DetectionRectangle;
 
@@ -29,7 +28,7 @@ impl Detector {
         }
     }
 
-    pub fn get_vectorized_faces(&self, image: &Mat) -> (Vec<Rect2i>, Vec<FaceEncodings>) {
+    pub fn get_vectorized_faces(&self, image: &Mat) -> Vec<(FaceEncodings, Rect2i)> {
         let matrix = Detector::cv_image_to_matrix(image);
 
         let locations = self.face_detector.face_locations(&matrix);
@@ -38,12 +37,11 @@ impl Detector {
             .map(Into::into)
             .collect::<Vec<Rect2i>>();
 
-        let encodings = locations
+        locations
             .iter()
             .map(|location |self.landmarks_predictor.face_landmarks(&matrix, location))
             .map(|landmarks |self.face_encoder.get_face_encodings(&matrix, &[landmarks], 0))
-            .collect::<Vec<FaceEncodings>>();
-
-        (rectangles, encodings)
+            .zip(rectangles)
+            .collect::<Vec<(FaceEncodings, Rect2i)>>()
     }
 }
