@@ -1,0 +1,13 @@
+[package]
+name = "dojo_rust"
+version = "0.1.0"
+authors = ["Paul Breton <pbreton@betomorrow.com>"]
+edition = "2018"
+
+[dependencies]
+opencv = {version = "0.32", default-features = false, features = ["opencv-4"]}
+
+
+[dependencies.face_recognition]
+git = "https://github.com/Pravez/face_recognition"
+features = ["download-models", "default"]
