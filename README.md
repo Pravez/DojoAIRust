@@ -17,7 +17,6 @@ Vous pouvez prendre une photo de vous et la ranger dans le dossier `data/` sous 
 est écrit pour aller directement chercher et indexer les photos qui s'y trouvent.
 
 Vous recevrez un script python qu'il suffira de placer dans le dossier `data/` et d'exécuter pour récupérer tous les visages de BeTomorrow !
-(d'ailleurs c'est normal niveau sécurité ça ?)
 
 ## Exécuter votre programme
 
