@@ -37,4 +37,22 @@ l'entendement, compilez et exécutez en mode release :
     $ cargo run --release
 ```
 
+## Troubleshooting
+
+Pour ceux qui n'utilisent pas CLion mais plutôt VSCode, MacOS est un peu pénible au niveau des permissions.
+OpenCV a besoin de sa persmission pour lancer la caméra, mais ne semble pas la demander automatiquement via la commande `cargo run` ni le shell VSCode.
+Il vous vaudra mieux alors ouvrir un shell dédié, naviguer jusqu'à votre dossier, puis :
+
+Lancer un 
+```shell script
+    $ cargo build --release
+```
+
+Suivi d'un 
+```shell script
+    $ ./target/release/dojo_rust
+```
+
+Pour lancer le programme. Merci Apple ♥.
+
 > That's all folks !
